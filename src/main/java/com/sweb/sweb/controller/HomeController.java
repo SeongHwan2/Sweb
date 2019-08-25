@@ -21,10 +21,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import com.sweb.sweb.util.Log;
 
 
 @Controller
 public class HomeController {
+	
+	public static String ip() {
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
+		String ip = request.getHeader("X-FORWARDED-FOR");
+		if (ip == null) ip = request.getRemoteAddr(); // 현재위치 받아오기
+		return ip;
+	}
+	
+	public static Log Logger = new Log();
+	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest req) {

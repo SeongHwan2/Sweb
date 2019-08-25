@@ -20,10 +20,11 @@ public class Log {
 	public void info(String str) throws IOException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
 		FileWriter fw = new FileWriter(Path + sdf.format(new Date()) + ".txt", true);
+		sdf.applyPattern("yyyy-MM-dd-hh:mm:ss"); // sdf 패턴 변경
+		fw.write(sdf.format(new Date()) + " - " + str + "\r\n");
 		
 		
-		
-		fw.write("\t\n"); // 줄바꾸기 기호 \t\n 같이 씀
+//		fw.write("\t\n"); // 줄바꾸기 기호 \t\n 같이 씀
 		fw.close();
 	}
 }
