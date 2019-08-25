@@ -5,7 +5,7 @@
 	<groupId>com.sweb</groupId>
 	<artifactId>sweb</artifactId>
 	<name>Sweb</name>
-	<packaging>war</packaging>
+	<packaging>war</packaging>  <!-- 빌드되는 종류 설정 -->
 	<version>1</version>
 	<properties>
 		<java-version>1.8</java-version>
@@ -83,7 +83,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- @Inject -->
+		<!-- @Inject --> <!-- DI 의존성 주입 -->
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>

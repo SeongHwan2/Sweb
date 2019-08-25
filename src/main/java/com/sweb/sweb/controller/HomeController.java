@@ -36,20 +36,20 @@ public class HomeController {
 		if (ip == null) ip = request.getRemoteAddr(); // 현재위치 받아오기
 		return ip;
 	}
-	
 	public static Log Logger = new Log();
+	{
+		// 윈도우 Path
+//		Logger.Path("C:\\Users\\Admin\\Desktop\\java study\\workspace\\blog\\src\\main\\upload\\log/");
+		
+		// 리눅스 Path
+		Logger.Path("/root/tomcat/webapps/upload/log/");
+	}
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest req) {
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
+		HomeController.Logger.info("test" + HomeController.ip());
 		HttpSession session = req.getSession();
 		session.setAttribute("test", "test");
 		
