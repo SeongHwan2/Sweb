@@ -28,6 +28,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sweb.sweb.dao.DaoInterFace;
 import com.sweb.sweb.util.Log;
 
 
@@ -50,7 +51,7 @@ public class HomeController {
 	}
 	
 	@Autowired
-	SqlSession session1;
+	DaoInterFace di;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest req) {
@@ -58,6 +59,8 @@ public class HomeController {
 		HomeController.Logger.info("test" + HomeController.ip());
 		HttpSession session = req.getSession();
 		session.setAttribute("test", "test");
+		
+		di.test();
 		
 		return "home";
 	}
