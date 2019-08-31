@@ -65,8 +65,18 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("/blog")
+	public String blog() {
+		return "blog";
+	}
 	
-	
+	@RequestMapping("/session")
+	public String session(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		System.out.println(session.getId());
+		session.setAttribute("test", "test");
+		return "TP";
+	}
 	
 	
 }
